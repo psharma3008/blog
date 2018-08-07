@@ -1,0 +1,13 @@
+    <strong>Comments:</strong><br>
+    	<% @comments.each do |c|%>
+    	 <%= c.body%>
+    	   <% if user_signed_in? %>
+    	     <% if c.user_id == current_user.id %>
+              <div>
+                <div id="<%= c.id %>"><%= link_to 'Edit', edit_blogger_article_comment_path(@blog,@post,c.id), remote: true %>
+    		        
+    	          <button class="D_com"><div >Destory Comment</div></div></button><br>
+              </div>
+    	     <% end %>
+    	   <% end %>
+    	<% end %>

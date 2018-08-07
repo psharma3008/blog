@@ -1,0 +1,34 @@
+<div id ="<%= @blog_id%>">
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+    </tr>
+    <% @articles.each do |a|%>
+      <tr>
+        <% if a.published %>
+          <th><%= link_to a.title, blogger_article_url(a.blogger_id,a.id) %>&check;
+          </th> 
+        <% end -%>
+        <% if a.user == current_user %>
+          <% if !a.published %>  
+            <th><%= link_to a.title, blogger_article_url(a.blogger_id,a.id) %></th>
+          <% end -%>
+          <tr id = "<%= a.id%>">
+            <td><%= link_to 'Edit', edit_blogger_article_url(a.blogger_id,a.id)%></td>
+            <td class="destory">Destroy</td>
+          </tr>
+        <% end -%>
+      </tr>
+      
+      <% if current_user && current_user.has_role?(:admin) %>
+        <% if !a.published %>
+          <tr>
+            <td><%= link_to a.title, blogger_article_url(a.blogger_id,a.id) %></td>
+            <td><%= link_to 'Approve Blog', verify_blogger_article_url(a.blogger_id,a.id) %></td>
+          </tr>   
+        <% end %>
+      <% end %>                                        
+    <%end %>
+  </table>
+  <%= link_to 'Back', blogger_index_path %>
+</div>

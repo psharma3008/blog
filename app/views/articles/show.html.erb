@@ -1,0 +1,23 @@
+<div id="<%= @post.blogger_id%>">
+    <div class="panel panel-default">
+    <p class="panel-body">
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
+    	<% if @post.avatar.attached? %>
+    		<%= image_tag(@post.avatar, heigth: '300' , width: '300') %>
+    	<%end%>
+    <p class="panel-footer">
+      <strong>Text:</strong>
+      <%= @post.body %>
+    </p>
+    </div>	
+    <div id="<%= @post.id%>">
+      <div id="comments">
+        <%= render 'comments/comment'%>
+      </div>
+      </div>
+    </p>
+    	<%= render 'comments/form'%>
+      <%= link_to 'Back', blogger_index_path %>
+</div>

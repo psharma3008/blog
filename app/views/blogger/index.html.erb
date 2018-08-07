@@ -1,0 +1,22 @@
+<h1>Listing Blog</h1>
+  <button type="button" class="btn"><%= link_to 'New Blog', new_blogger_path %>
+  </button> 
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @blogger.each do |blogger| %>
+    <tr>
+      <td><%= blogger.name %></td>
+      <td><%= link_to 'Read'.html_safe, blogger_path(blogger) %></td>
+       <% if blogger.user == current_user %>
+        <td><%= link_to 'Edit', edit_blogger_path(blogger) %></td>
+        <td><%= link_to 'Add Articles', new_blogger_article_path(blogger) %></td>
+        <td><%= link_to 'Destroy', blogger_path(blogger),
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %></td>  
+       <% end %>
+    </tr>
+  <% end -%>
+</table>

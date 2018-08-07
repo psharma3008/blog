@@ -1,0 +1,1 @@
+<h1>hello Rails in react</h1>

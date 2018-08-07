@@ -1,0 +1,11 @@
+<%= form_for @blogger, url: {action: "create"} do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </p>
+  <p>
+  	<%= f.label :avatar %><br />
+  	<%= f.file_field  'avatar' %>
+    <%= f.submit %>
+  </p>
+<%end %>

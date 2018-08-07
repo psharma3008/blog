@@ -1,0 +1,9 @@
+<p>
+  <strong>Name:</strong>
+  <%= @blogger.name %>
+    <% if @blogger.avatar.attached? %>
+      <%= image_tag(@blogger.avatar, heigth: '300' , width: '300') %>
+    <% end %>
+</p>
+<%= link_to 'Back', blogger_index_path %>
+<%= render template: "articles/index"%>
